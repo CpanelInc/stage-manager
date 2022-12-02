@@ -1,0 +1,7 @@
+
+th { text-align: left; }
+
+input { color: red; font-weight: bold; font-size: larger; }
+input.master { color: black; font-weight: normal; font-size: initial; }
+
+

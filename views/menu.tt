@@ -1,0 +1,20 @@
+<div>
+<form method='post' action='<% prefix %>/stage'>
+<table>
+<% staging_form %>
+</table>
+<button id='stage' name='stage'>stage</button>
+</form>
+</div>
+<div class='note'>
+<p>
+Note: The 'publish' button does not currently pull before publication. Please make sure you've staged the latest version before publishing if that's what you intend to do.
+</p>
+</div>
+<form method='post' action='<% prefix %>/publish'>
+<% publishing_form %>
+<button id='publish' name='publish' <% publishing_disabled %> >publish</button>
+</form>
+</div>
+
+

@@ -1,0 +1,35 @@
+
+<div><h2>Staging</h2><br />
+<form method='post' action='<% prefix %>/v2/stage'>
+<table>
+<tr><th>repo</th><th>branch</th><th>short hash</th><th>full hash</th></tr>
+<% staging_form %>
+</table>
+<button id='stage' name='stage'>stage</button>
+</form>
+</div>
+
+<div><h2>Building</h2>
+<p>
+Currently built version is: <% version %>
+</p>
+<p>
+Extended version information:<br />
+<% version_extended_info %>
+</p>
+<form method='post' action='<% prefix %>/v2/build'>
+<button id='build' name='build' >(re)build</button>
+</form>
+</div>
+<div><h2>Publishing</h2><br />
+<form method='post' action='<% prefix %>/v2/publish'>
+<% publishing_form %>
+<button id='publish' name='publish'>publish</button>
+</form>
+</div>
+<div id='status' class='<% status %>'><h2>Status</h2>
+<br />
+<hr />
+<% status_message %>
+</div>
+

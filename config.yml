@@ -1,0 +1,78 @@
+# This is the main configuration file of your Dancer2 app
+# env-related settings should go to environments/$env.yml
+# all the settings in this file will be loaded at Dancer's startup.
+
+# Your application's name
+appname: "stage-manager"
+
+# The default layout to use for your application (located in
+# views/layouts/main.tt)
+layout: "main"
+
+# when the charset is set to UTF-8 Dancer2 will handle for you
+# all the magic of encoding and decoding. You should not care
+# about unicode within your app when this setting is set (recommended).
+charset: "UTF-8"
+
+# template engine
+# simple: default and very basic template engine
+# template_toolkit: TT
+
+#template: "simple"
+template: "template_toolkit"
+session: YAML
+engines:
+    template:
+        template_toolkit:
+            start_tag: '<%'
+            end_tag:   '%>'
+    session:
+        YAML:
+            cookie_duration: 3600
+
+logger: File
+show_errors: 1
+
+behind_proxy: 1
+prefix: '/sm'
+
+plugins:
+    Auth::SimpleLDAP:
+        host: 'ldaps://ldap.example.com'
+        basedn: 'ou=People,dc=example,dc=com'
+        user_filter: '(mail=%s)'
+        user_limit_filter: '(|(group=Systems Administration)'
+
+### custom config for this application
+git_bin: /usr/bin/git
+tar_bin: /usr/bin/tar
+fpm_bin: /usr/local/bin/fpm
+sync_bin: rsync.sh
+servers:
+    staff.tickets:
+        sync_dir: '/home/support'
+        repo_dirs:
+            '/home':
+                - support
+            '/home/support/git':
+                - _ALL_
+    support.tickets:
+        sync_dir: '/home/support'
+        repo_dirs:
+            '/home':
+                - support
+            '/home/support/git':
+                - _ALL_
+    store.manage:
+        sync_dir: '/home/store'
+        repo_dirs:
+            '/home/store/git':
+                - _ALL_
+    manage2.manage:
+        sync_dir: '/home/manage'
+        repo_dirs:
+            '/home':
+                - manage
+            '/home/manage/git':
+                - _ALL_
+

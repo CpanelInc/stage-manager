@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Plack::Loader ();
+use Plack::Util   ();
+
+Plack::Loader->load('CGI')->run(
+    Plack::Util::load_psgi( './sm.psgi' )
+);
+
+exit 0;
+

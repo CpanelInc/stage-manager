@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>stage-manager</title>
+<style type='text/css'>
+
+div { margin-bottom: 3em; }
+div#status { padding: 2em; border-width: 5px; border-style: solid; }
+div#status.success { border-color: green; }
+div#status.failure { border-color: red; }
+
+th { text-align: left; }
+
+input { color: red; font-weight: bold; font-size: larger; }
+input.master, input#un, input#pw { color: black; font-weight: normal; font-size: initial; }
+
+</style>
+</head>
+<body>
+<% content %>
+</body>
+</html>
